@@ -650,6 +650,7 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
@@ -685,15 +686,31 @@ section {
 }
 
 .portfolio .portfolio-wrap {
-  transition: 0.3s;
+  display: block;
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio .portfolio-wrap:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio .portfolio-wrap img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.portfolio .portfolio-wrap:hover img {
+  transform: scale(1.1);
 }
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.225);  
   position: absolute;
   left: 30px;
   right: 30px;
@@ -707,22 +724,28 @@ section {
 .portfolio .portfolio-wrap .portfolio-info {
   opacity: 0;
   position: absolute;
-  top: 10%;
+  bottom: 0;
   left: 0;
   right: 0;
+  /* background: rgba(150, 146, 146, 0.7); */
+  color: #fff;
+  padding: 10px;
   text-align: center;
-  z-index: 3;
-  transition: all ease-in-out 0.3s;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-info {
+  opacity: 1;
 }
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 20px;
-  color: #364146;
-  font-weight: 600;
+  font-size: 30px;
+   color: #070707;     /*color del texto del hover */
+  font-weight: 700;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: #364146;
+  color: #fff;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -772,6 +795,22 @@ section {
   opacity: 1;
   bottom: calc(50% - 50px);
 }
+.portfolio .portfolio-name {
+  text-align: center;
+  background: #f7f8f9;
+  padding: 10px 0;
+  margin-top: -4px; 
+  border-radius: 0 0 8px 8px;
+  border-top: 1px solid #e9ecee;
+}
+
+.portfolio .portfolio-name h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #364146;
+  margin: 0;
+}
+
 
 /*--------------------------------------------------------------
 # Portfolio Details
@@ -901,7 +940,6 @@ section {
   box-sizing: content-box;
   min-height: 320px;
 }
-
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
   border-radius: 50%;
@@ -910,6 +948,15 @@ section {
   z-index: 2;
   border: 6px solid #fff;
 }
+
+.testimonials .testimonial-item .testimonial-img.large-img {
+  width: 100%; /* Ajusta según sea necesario */
+  max-width: 500px; /* Ajusta según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 20px auto; /* Ajusta el margen según sea necesario */
+  border-radius: 0; /* Elimina el borde redondeado para la imagen grande */
+}
+
 
 .testimonials .testimonial-item h3 {
   font-size: 18px;
@@ -1634,3 +1681,127 @@ section {
   font-size: 13px;
   color: #364146;
 }
+/****************************/
+/*     Details Lightbox     */
+/****************************/
+.lightbox-basic {
+  position: relative;
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2.5rem 1.5rem;
+  background-color: #ffffff;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.lightbox-basic .image-container {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.lightbox-basic .image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.lightbox-basic h3 {
+  margin-bottom: 1rem;
+  font-size: 28px;
+  color: #364146;
+}
+
+.lightbox-basic hr {
+  width: 60px;
+  height: 3px;
+  margin: 0.5rem 0;
+  border: none;
+  background-color: #008DDA;
+}
+
+.lightbox-basic .lightbox-content {
+  font-size: 18px;
+  color: #444444;
+}
+
+.lightbox-basic .lightbox-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+  color: #576971;
+}
+
+.lightbox-basic .list-unstyled {
+  margin-bottom: 1.75rem;
+}
+
+.lightbox-basic .list-unstyled .fas {
+  color: #008DDA;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.lightbox-basic .list-unstyled .media-body {
+  margin-left: 0.75rem;
+  font-size: 18px;
+}
+
+.lightbox-basic .btn-solid-reg.mfp-close {
+  position: relative;
+  width: auto;
+  height: auto;
+  color: #ffffff;
+  background-color: #008DDA;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-family: "Open Sans";
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.lightbox-basic .btn-solid-reg.mfp-close:hover {
+  background-color: #005f9e;
+  color: #ffffff;
+}
+
+.lightbox-basic .btn-outline-reg.mfp-close.as-button {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin-left: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #008DDA;
+  color: #008DDA;
+  border-radius: 5px;
+  font-family: "Open Sans";
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lightbox-basic .btn-outline-reg.mfp-close.as-button:hover {
+  background-color: #008DDA;
+  color: #ffffff;
+}
+
+.lightbox-basic button.mfp-close.x-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 36px;
+  height: 36px;
+  color: #555555;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.lightbox-basic button.mfp-close.x-button:hover {
+  color: #000000;
+}
+
+
+
