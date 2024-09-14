@@ -1,10 +1,3 @@
-/**
-* Template Name: Scaffold
-* Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
@@ -251,5 +244,52 @@
       mirror: false
     })
   });
+
+
+
+  //Carrusel de las imagenes:
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".nav-tabs .nav-link");
+    const tabContent = document.querySelectorAll(".tab-content .tab-pane");
+  
+    // Verificar si hay tabs y contenido antes de continuar
+    if (tabs.length === 0 || tabContent.length === 0) {
+      //console.error("No se encontraron tabs o contenido de tabs.");
+      return; // Detener si no hay tabs
+    }
+  
+    let currentIndex = 0;
+    const intervalTime = 3000; // Cambia cada 5 segundos
+  
+    function showTab(index) {
+      // Verificar si el índice es válido y si existen los elementos
+      if (tabs[index] && tabContent[index]) {
+        // Eliminar la clase 'active' y 'show' de todos los tabs y contenidos
+        tabs.forEach((tab, i) => {
+          tab.classList.remove("active", "show");
+          if (tabContent[i]) {
+            tabContent[i].classList.remove("active", "show");
+          }
+        });
+  
+        // Agregar la clase 'active' y 'show' al tab y contenido correspondiente
+        tabs[index].classList.add("active", "show");
+        tabContent[index].classList.add("active", "show");
+      } else {
+        console.error("El índice o los elementos son inválidos.");
+      }
+    }
+  
+    // Mostrar el primer tab al cargar
+    showTab(currentIndex);
+  
+    // Intervalo para cambiar automáticamente los tabs
+    setInterval(function () {
+      currentIndex = (currentIndex + 1) % tabs.length; // Avanza al siguiente índice
+      showTab(currentIndex);
+    }, intervalTime);
+  });
+  
+  
 
 })();

@@ -462,52 +462,69 @@ section {
 # About
 --------------------------------------------------------------*/
 .about {
-  padding: 0;
-  margin-top: 40px;
+  padding: 60px 0;
+  background-color: #f9f9f9;
 }
 
 .about .container {
-  background-color: #f7f8f9;
-  padding: 60px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about .row {
+  display: flex;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about h3 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.about p.fst-italic {
+  font-style: italic;
+  font-size: 17px;
+  color: #777;
+}
+
+.about .content {
+  padding-left: 30px;
 }
 
 @media (max-width: 992px) {
-  .about .container {
-    padding: 30px;
+  .about .content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .about .row {
+    flex-direction: column;
+  }
+  .about img {
+    margin-bottom: 20px;
   }
 }
 
-.about .content h3 {
-  font-weight: 400;
-  font-size: 32px;
-  color: #364146;
-  font-family: "Poppins", sans-serif;
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  padding-bottom: 10px;
-}
-
-.about .content ul i {
-  font-size: 20px;
-  padding-right: 4px;
-  color: #28a745;
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
 
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
 .features {
   padding-bottom: 40px;
+  background-color: #fff;
 }
 
 .features .nav-tabs {
@@ -516,28 +533,28 @@ section {
 
 .features .nav-link {
   border: 0;
-  padding: 20px;
+  padding: 15px;
   transition: 0.3s;
   color: #364146;
-  transition: 0.3s ease-in-out;
-  border-radius: 0;
-  border-left: 4px solid #fafbfb;
+  border-left: 4px solid transparent;
 }
 
 .features .nav-link h4 {
   font-size: 18px;
-  font-weight: 600;
-  transition: 0.3s ease-in-out;
+  font-weight: 500;
   color: #576971;
+  transition: color 0.3s;
 }
 
 .features .nav-link p {
   font-size: 14px;
   margin-bottom: 0;
+  color: #7a8c94;
 }
 
 .features .nav-link:hover {
-  background: #fafbfb;
+  background: none;
+  color: #364146;
 }
 
 .features .nav-link:hover h4 {
@@ -545,10 +562,8 @@ section {
 }
 
 .features .nav-link.active {
-  border-radius: 0;
-  border: 0;
   border-left: 4px solid #009cea;
-  background: #fafbfb;
+  background: none;
 }
 
 .features .nav-link.active h4 {
@@ -556,21 +571,44 @@ section {
 }
 
 .features .tab-pane.active {
-  animation: slide-down 0.5s ease-out;
+  animation: slide-down 0.3s ease-out;
 }
 
 .features .tab-content {
   text-align: right;
 }
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active.show {
+  display: block;
+}
+
 
 @keyframes slide-down {
   0% {
     opacity: 0;
+    transform: translateY(-10px);
   }
-
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
+}
+.features h5 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #1cb1f1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.features .nav-item h5 {
+  margin-top: 50px;
+  font-weight: 600;
 }
 
 /*--------------------------------------------------------------
@@ -1417,18 +1455,15 @@ section {
   padding-bottom: 8px;
 }
 
-.contact .php-email-form .error-message {
+.contact .php-email-form .message {
   display: none;
   color: #fff;
-  background: #ed3c0d;
+  background: #0d27ed;
   text-align: left;
   padding: 15px;
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
-  margin-top: 25px;
-}
 
 .contact .php-email-form .sent-message {
   display: none;
